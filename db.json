@@ -1,0 +1,384 @@
+{
+  "cardWarpper": [
+    {
+      "id": 2,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-16076_f0ea67d7-0fa1-4e53-847e-a9d600848eb6.png",
+      "title": "گوشی موبایل سامسونگ مدل Galaxy A14 (SM-A145F/DS) ظرفیت 128 گیگابایت رم 4 گیگابایت - ویتنام",
+      "off": 2,
+      "price": 5200000
+    },
+    {
+      "id": 3,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-28447_cd6a1a20-c7ad-4af0-a7f3-d84a522e3b90.png",
+      "title": "لپ تاپ اچ پی ۱۵.۶ اینچی مدل Pavilion x360 i7 1255U 32GB 1TB",
+      "off": 2,
+      "price": 58000000
+    },
+    {
+      "id": 1,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-10341_861a18d2-cf80-41eb-a790-b50a56bdf823.png",
+      "title": "گوشی موبایل شیائومی Redmi Note 11 Pro+ 5G ظرفیت 128 گیگابایت رم 8 گیگابایت - پک چین رام گلوبال",
+      "off": 9,
+      "price": 11745000
+    },
+    {
+      "id": 4,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-23511_81400f0b-c446-41ce-9350-b77117b822f7.png",
+      "title": "یخچال فریزر ساید بای ساید جی پلاس 28 فوت مدل GSS-M7625",
+      "off": 8,
+      "price": 42700000
+    },
+    {
+      "id": 5,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-24143_ee8314b2-3f73-439a-884e-0b7d088c714e.png",
+      "title": "گوشی موبايل نوکيا مدل 106 (2018) ظرفیت 4 مگابایت رم 4 مگابایت - مونتاژ ایران",
+      "off": 3,
+      "price": 740000
+    },
+    {
+      "id": 6,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-28470_cff43f2b-c827-4844-9364-c97383b24c1c.png",
+      "title": "هندزفری سیمی آنر مدل AM116",
+      "off": 9,
+      "price": 340000
+    },
+    {
+      "id": 7,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-10848_2b8b89e4-831d-467d-ad04-bee450a73fa0.png",
+      "title": "پرینتر برادر مدل DCP-L2540DW چندکاره",
+      "off": 4,
+      "price": 12999000
+    },
+    {
+      "id": 8,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-10341_861a18d2-cf80-41eb-a790-b50a56bdf823.png",
+      "title": "گوشی موبایل آنر X6 ظرفیت 64 گیگابایت رم 4 گیگابایت",
+      "off": 7,
+      "price": 4899000
+    },
+    {
+      "id": 9,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-26026_5cdfa7d5-646f-48a6-ba1d-6bd82866f70f.png",
+      "title": "گوشی موبايل نوکیا مدل 106 (2023) دو سیم کارت",
+      "off": 2,
+      "price": 756000
+    },
+    {
+      "id": 10,
+      "imgUrl": "https://www.technolife.ir/image/small_product-TLP-10999_59e3adfc-8910-4a9c-bbbd-c36f4fc5bc69.png",
+      "title": "پرینتر اچ پی مدل LaserJet MFP M141w لیزری چندکاره",
+      "off": 1,
+      "price": 7980000
+    }
+  ],
+  "allProducts": [
+    {
+      "id": 2,
+      "img": "https://www.technolife.ir/image/small_product-TLP-16076_f0ea67d7-0fa1-4e53-847e-a9d600848eb6.png",
+      "title": "گوشی موبایل سامسونگ مدل Galaxy A14 (SM-A145F/DS) ظرفیت 128 گیگابایت رم 4 گیگابایت - ویتنام",
+      "off": 2,
+      "price": 5200000
+    },
+    {
+      "id": 3,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28447_cd6a1a20-c7ad-4af0-a7f3-d84a522e3b90.png",
+      "title": "لپ تاپ اچ پی ۱۵.۶ اینچی مدل Pavilion x360 i7 1255U 32GB 1TB",
+      "off": 2,
+      "price": 58000000
+    },
+    {
+      "id": 1,
+      "img": "https://www.technolife.ir/image/small_product-TLP-10341_861a18d2-cf80-41eb-a790-b50a56bdf823.png",
+      "title": "گوشی موبایل شیائومی Redmi Note 11 Pro+ 5G ظرفیت 128 گیگابایت رم 8 گیگابایت - پک چین رام گلوبال",
+      "off": 9,
+      "price": 11745000
+    },
+    {
+      "id": 4,
+      "img": "https://www.technolife.ir/image/small_product-TLP-23511_81400f0b-c446-41ce-9350-b77117b822f7.png",
+      "title": "یخچال فریزر ساید بای ساید جی پلاس 28 فوت مدل GSS-M7625",
+      "off": 8,
+      "price": 42700000
+    },
+    {
+      "id": 5,
+      "img": "https://www.technolife.ir/image/small_product-TLP-24143_ee8314b2-3f73-439a-884e-0b7d088c714e.png",
+      "title": "گوشی موبايل نوکيا مدل 106 (2018) ظرفیت 4 مگابایت رم 4 مگابایت - مونتاژ ایران",
+      "off": 3,
+      "price": 740000
+    },
+    {
+      "id": 6,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28470_cff43f2b-c827-4844-9364-c97383b24c1c.png",
+      "title": "هندزفری سیمی آنر مدل AM116",
+      "off": 9,
+      "price": 340000
+    },
+    {
+      "id": 7,
+      "img": "https://www.technolife.ir/image/small_product-TLP-10848_2b8b89e4-831d-467d-ad04-bee450a73fa0.png",
+      "title": "پرینتر برادر مدل DCP-L2540DW چندکاره",
+      "off": 4,
+      "price": 12999000
+    },
+    {
+      "id": 8,
+      "img": "https://www.technolife.ir/image/small_product-TLP-10341_861a18d2-cf80-41eb-a790-b50a56bdf823.png",
+      "title": "گوشی موبایل آنر X6 ظرفیت 64 گیگابایت رم 4 گیگابایت",
+      "off": 7,
+      "price": 4899000
+    },
+    {
+      "id": 9,
+      "img": "https://www.technolife.ir/image/small_product-TLP-26026_5cdfa7d5-646f-48a6-ba1d-6bd82866f70f.png",
+      "title": "گوشی موبايل نوکیا مدل 106 (2023) دو سیم کارت",
+      "off": 2,
+      "price": 756000
+    },
+    {
+      "id": 10,
+      "img": "https://www.technolife.ir/image/small_product-TLP-10999_59e3adfc-8910-4a9c-bbbd-c36f4fc5bc69.png",
+      "title": "پرینتر اچ پی مدل LaserJet MFP M141w لیزری چندکاره",
+      "off": 1,
+      "price": 7980000
+    },
+    {
+      "catagory": "pc",
+      "id": 200,
+      "img": "https://www.technolife.ir/image/color_image_TLP-7477_1a1a1a_05341bba-f409-4348-a200-eb6b3344d80e.png",
+      "off": "5",
+      "price": "40000000",
+      "title": "کامپیوتر گیمینگ ام اس آی مدل MEG AEGIS TI5 12VTJ i9-12900K"
+    },
+    {
+      "catagory": "phones_janebi",
+      "id": 401,
+      "img": "https://www.technolife.ir/image/color_image_TLP-18462_ffffff_24ace285-9a92-45ab-87fa-34d32cb2f581.png",
+      "off": "",
+      "price": "700000",
+      "title": "شارژر دیواری سامسونگ 45 وات مدل EP-TA845 سه شاخه اروپا"
+    },
+    {
+      "catagory": "phones_janebi",
+      "id": 402,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.1118834173904814735.jpg",
+      "off": "",
+      "price": "156000",
+      "title": "شارژ کن"
+    },
+    {
+      "catagory": "phones_janebi",
+      "id": 403,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.921282655907835317.jpg",
+      "off": "30",
+      "price": "47000",
+      "title": "سیم شارژر"
+    },
+    {
+      "catagory": "phones_janebi",
+      "id": 404,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.621169763885655922.jpg",
+      "off": "",
+      "price": "800000",
+      "title": "پاوربانک 2000هزار"
+    },
+    {
+      "id": 31,
+      "img": "https://www.technolife.ir/image/small_product-TLP-27197_bea72a1b-5f89-486c-b1be-aa5663f989c2.png",
+      "title": "لپ تاپ اچ پی ۱۵.۶ اینچی مدل Pavilion x360 i7 1255U 32GB 1TB",
+      "price": 58000000,
+      "off": 3
+    },
+    {
+      "id": 32,
+      "img": "https://www.technolife.ir/image/small_product-TLP-24143_ee8314b2-3f73-439a-884e-0b7d088c714e.png",
+      "title": "گوشی موبايل نوکيا مدل 106 (2018) ظرفیت 4 مگابایت رم 4 مگابایت - مونتاژ ایران",
+      "price": 740000
+    },
+    {
+      "id": 33,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28800_c90207e3-ccdc-4630-900a-337299189f08.png",
+      "title": "گوشی شیائومی مدل T13 Pro",
+      "off": 9,
+      "price": 340000
+    },
+    {
+      "catagory": "phones_janebi",
+      "id": 405,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.553190969417631828.jpg",
+      "off": "",
+      "price": "260000",
+      "title": "هولدر موبایل"
+    },
+    {
+      "catagory": "flashes",
+      "id": 501,
+      "img": "https://www.technolife.ir/image/color_image_TLP-5644_1a1a1a_d6a5895b-db2d-45a5-96fd-30cbdd20504a.png",
+      "off": "10",
+      "price": "35000",
+      "title": "کارت حافظه microSDHC سن دیسک مدل Ultra کلاس 10 استاندارد UHS-I A1 سرعت 120MBps ظرفیت 32 گیگابایت"
+    },
+    {
+      "catagory": "flashes",
+      "id": 502,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.195250794813002456.jfif",
+      "off": "",
+      "price": "200000",
+      "title": "دانگل "
+    },
+    {
+      "catagory": "flashes",
+      "id": 503,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.51030321238606458.jfif",
+      "off": "14",
+      "price": "170000",
+      "title": "16گیگ USB"
+    },
+    {
+      "id": 41,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28545_5b2f6003-54a2-4afd-8f96-2f98e4edb3b0.png",
+      "title": "لپ تاپ اچ پی 15.6 اینچی مدل Victus 15 i5 13420H 16GB 512GB RTX3050",
+      "off": 9,
+      "price": 11745000
+    },
+    {
+      "id": 42,
+      "img": "https://www.technolife.ir/image/small_product-TLP-23832_4e0ade3f-9aab-4316-961b-7ff78269dd6f.png",
+      "title": "لپ‌ تاپ 15.6 اینچی ایسر مدل Nitro 5 AN515 R7 6800H 16G 512SSD 3060 6G",
+      "price": 5200000
+    },
+    {
+      "id": 43,
+      "img": "https://www.technolife.ir/image/small_product-TLP-22551_08551a53-b1c8-4227-b3ec-fcfd0453f034.png",
+      "title": "لپ تاپ اچ پی ۱۵.۶ اینچی مدل Pavilion x360 i7 1255U 32GB 1TB",
+      "price": 58000000
+    },
+    {
+      "id": 44,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28442_f5975bbe-8121-4ceb-ae8c-73d752d2f494.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی مدل IdeaPad 3 15IAU7 Core i3 12GB 512GB SSD",
+      "price": 42700000
+    },
+    {
+      "id": 46,
+      "img": "https://www.technolife.ir/image/small_product-TLP-21086_5842dbcb-4a6e-4edf-b244-c58ea80b463f.png",
+      "title": "لپ تاپ ایسوس 15.6 اینچی مدل Vivobook 15 R1504VA i5 1335U 16GB 512GB",
+      "off": 9,
+      "price": 340000
+    },
+    {
+      "id": 47,
+      "img": "https://www.technolife.ir/image/small_product-TLP-26303_7cc3afcf-1b47-4cfd-b685-0db9fa4cef55.png",
+      "title": "لپ تاپ اچ پی 15.6 اینچی مدل Laptop 15-fd0245nia i5 1335U 8GB 512GB MX550",
+      "price": 12999000
+    },
+    {
+      "id": 48,
+      "img": "https://www.technolife.ir/image/small_product-TLP-20389_1425dff3-0f96-4700-890d-03e81e53a2ce.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی مدل LOQ Gaming i7 13620 16GB 512GB 6GB 4050",
+      "price": 4899000
+    },
+    {
+      "id": 49,
+      "img": "https://www.technolife.ir/image/small_product-TLP-15270_2c39c18a-3ffd-4cc4-bcd4-09ae109a93d9.png",
+      "title": " لپ تاپ 15.6 اینچی ایسوس مدل TUF Gaming F15 FX507ZC i5 12500H 8GB 512GB RTX3050 4GB",
+      "price": 756000
+    },
+    {
+      "id": 50,
+      "img": "https://www.technolife.ir/image/small_product-TLP-27509_9d04367a-a141-4aa2-843e-d9eed4326558.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی IdeaPad Slim3 i3 1305U 8GB 256GB",
+      "off": 1,
+      "price": 7980000
+    },
+    {
+      "catagory": "pc_janebi",
+      "id": 600,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.66280211157942479.jpg",
+      "off": "5",
+      "price": "1000000",
+      "title": "کیس"
+    },
+    {
+      "catagory": "laptop",
+      "id": 700,
+      "img": "https://www.technolife.ir/image/color_image_TLP-10154_cfcfcf_4fde72e7-47f1-4fa5-b174-eea2c3f2e0e6.png",
+      "off": "2",
+      "price": "1600000",
+      "title": "تبدیل OTG تایپ سی هیسکا مدل OT-01"
+    },
+    {
+      "catagory": "phones",
+      "id": 301,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.20023621490558039.jpg",
+      "off": "",
+      "price": "7000000",
+      "title": "موبایل 64 گیگ"
+    },
+    {
+      "catagory": "phones",
+      "id": 303,
+      "img": "https://faisymyiqxclwdmyttcl.supabase.co/storage/v1/object/public/shopingcard/0.034115899197202598.jpg",
+      "off": "",
+      "price": "36000000",
+      "title": "ایفون سبز"
+    },
+    {
+      "id": 11,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28545_5b2f6003-54a2-4afd-8f96-2f98e4edb3b0.png",
+      "title": "لپ تاپ اچ پی 15.6 اینچی مدل Victus 15 i5 13420H 16GB 512GB RTX3050",
+      "off": 9,
+      "price": 11745000
+    },
+    {
+      "id": 12,
+      "img": "https://www.technolife.ir/image/small_product-TLP-23832_4e0ade3f-9aab-4316-961b-7ff78269dd6f.png",
+      "title": "لپ‌ تاپ 15.6 اینچی ایسر مدل Nitro 5 AN515 R7 6800H 16G 512SSD 3060 6G",
+      "price": 5200000
+    },
+    {
+      "id": 13,
+      "img": "https://www.technolife.ir/image/small_product-TLP-22551_08551a53-b1c8-4227-b3ec-fcfd0453f034.png",
+      "title": "لپ تاپ اچ پی ۱۵.۶ اینچی مدل Pavilion x360 i7 1255U 32GB 1TB",
+      "price": 58000000
+    },
+    {
+      "id": 14,
+      "img": "https://www.technolife.ir/image/small_product-TLP-28442_f5975bbe-8121-4ceb-ae8c-73d752d2f494.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی مدل IdeaPad 3 15IAU7 Core i3 12GB 512GB SSD",
+      "price": 42700000
+    },
+    {
+      "id": 16,
+      "img": "https://www.technolife.ir/image/small_product-TLP-21086_5842dbcb-4a6e-4edf-b244-c58ea80b463f.png",
+      "title": "لپ تاپ ایسوس 15.6 اینچی مدل Vivobook 15 R1504VA i5 1335U 16GB 512GB",
+      "off": 9,
+      "price": 340000
+    },
+    {
+      "id": 17,
+      "img": "https://www.technolife.ir/image/small_product-TLP-26303_7cc3afcf-1b47-4cfd-b685-0db9fa4cef55.png",
+      "title": "لپ تاپ اچ پی 15.6 اینچی مدل Laptop 15-fd0245nia i5 1335U 8GB 512GB MX550",
+      "price": 12999000
+    },
+    {
+      "id": 18,
+      "img": "https://www.technolife.ir/image/small_product-TLP-20389_1425dff3-0f96-4700-890d-03e81e53a2ce.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی مدل LOQ Gaming i7 13620 16GB 512GB 6GB 4050",
+      "price": 4899000
+    },
+    {
+      "id": 19,
+      "img": "https://www.technolife.ir/image/small_product-TLP-15270_2c39c18a-3ffd-4cc4-bcd4-09ae109a93d9.png",
+      "title": " لپ تاپ 15.6 اینچی ایسوس مدل TUF Gaming F15 FX507ZC i5 12500H 8GB 512GB RTX3050 4GB",
+      "price": 756000
+    },
+    {
+      "id": 20,
+      "img": "https://www.technolife.ir/image/small_product-TLP-27509_9d04367a-a141-4aa2-843e-d9eed4326558.png",
+      "title": "لپ تاپ لنوو 15.6 اینچی IdeaPad Slim3 i3 1305U 8GB 256GB",
+      "off": 1,
+      "price": 7980000
+    }
+  ]
+}

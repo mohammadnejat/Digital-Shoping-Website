@@ -1,0 +1,14 @@
+@media screen and (max-width: 1024px) {
+    .text-mobile {
+        font-size: 12px;
+    }
+}
+
+.mySwiper2 {
+    
+}
+
+.cards-borders {
+    border-width: 2px;
+    border-style: solid;
+}

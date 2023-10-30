@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url('fonts/webfonts/Vazirmatn-FD-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-style: normal;
+  font-family: 'Vazirmatn FD';
+  visibility: visible;
+  direction: rtl;
+  color: #222222;
+  background-color: #ffffff;
+}
+
+.blue {
+  backdrop-filter: blur(15px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 45;
+}
+
+*:focus {
+  outline-offset: none !important;
+  outline: black !important;
+  border: none !important;
+}
+
+#fadeUp {
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: forwards;
+  animation-direction: alternate;
+  animation-name: fade;
+}
+
+/* @keyframes fade {
+  from {
+    top: 0%;
+  }
+
+  to {
+    
+    top: 210%;
+  }
+} */
+
+.fadeUp {
+  animation: fade 0.2s ease forwards;
+}
+
+@keyframes fade {
+  0% {
+    top: 130%;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    top: 90%;
+  }
+}
+
+.fade {
+  animation: fades 0.2s ease forwards;
+}
+
+@keyframes fades {
+  0% {
+    top: 90%;
+    opacity: 1;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+    top: 130%;
+  }
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  color: white !important;
+}
+
+.mdAnimeUp {
+  animation: fadeUpNav 0.3s ease forwards;
+}
+@keyframes fadeUpNav {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.mdAnimeDown {
+  animation: fadeDownNav 0.3s ease forwards;
+}
+@keyframes fadeDownNav {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+
+.swal2-title {
+  font-size: 14px;
+}

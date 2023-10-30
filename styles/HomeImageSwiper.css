@@ -1,0 +1,45 @@
+#app {
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#image-Swiper {
+  background: linear-gradient(#e71717, #b053f3),
+    linear-gradient(to right, rgb(209, 103, 241), rgb(188, 81, 188));
+  border: 1px solid transparent;
+  background-repeat: no-repeat;
+  background-origin: padding-box, border-box;
+}
+
+.swiper-icon {
+  margin: 2rem auto 2rem auto;
+  border-style: solid;
+  border-width: 6px;
+}
+
+@media screen and (max-width: 1024px) {
+  .swiper-icon {
+    border: none;
+  }
+
+  #imageScreen {
+    height: 224px;
+  }
+
+  ;
+
+
+}

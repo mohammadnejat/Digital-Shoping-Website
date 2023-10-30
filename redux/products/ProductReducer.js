@@ -1,0 +1,69 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
+
+export const getProductsFromServer = createAsyncThunk(
+  'ProductSlicer/getProductsFromServer',
+  async () => {
+    try {
+      const response = await axios
+        .get('http://localhost:3004/allProducts')
+        .then(res => {
+          return res.data
+        })
+      return response
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    }
+  }
+)
+export const getImageFromServer = createAsyncThunk(
+  'ProductSlicer/getImageFromServer',
+  async () => {
+    try {
+      const response = await axios
+        .get('http://localhost:3004/cardWarpper')
+        .then(res => {
+          return res.data
+        })
+      return response
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    }
+  }
+)
+
+const ProductReducer = createSlice({
+  name: 'ProductSlicer',
+  initialState: {
+    allProducts: [],
+    imageWarpers: [],
+    sortedProducts: [],
+    filtredProducts: '',
+    currentPageNumber: 1,
+    pageSizeIndex: 6
+  },
+  reducers: {
+    setCurrentPageNumber: (state, action) => {
+      state.currentPageNumber = action.payload.currentPage
+    },
+    findedInputItems: (state, action) => {
+      state.filtredProducts = action.payload
+    },
+    sortedProducts: (state, action) => {
+      const sorted = state.allProducts.sort(action.payload)
+      state.allProducts = sorted
+    }
+  },
+  extraReducers: builder => {
+    builder.addCase(getProductsFromServer.fulfilled, (state, action) => {
+      state.allProducts = action.payload
+    })
+    builder.addCase(getImageFromServer.fulfilled, (state, action) => {
+      state.imageWarpers = action.payload
+    })
+  }
+})
+
+export const { setCurrentPageNumber, findedInputItems, sortedProducts } =
+  ProductReducer.actions
+export default ProductReducer.reducer
