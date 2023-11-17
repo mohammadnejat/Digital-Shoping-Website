@@ -6,7 +6,6 @@ import "@/styles/HomeImageSwiper.css"
 import "@/styles/ProductsComponent.css"
 import "@/styles/SellCards.css"
 import "@/styles/Sidebar.css"
-import "@/styles/UserLoginDropDown.css"
 import "@/styles/UserPersonalInfoModal.css"
 import "@/styles/UserProfileMenu.css"
 import { Provider } from 'react-redux'
