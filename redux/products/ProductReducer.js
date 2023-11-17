@@ -6,7 +6,7 @@ export const getProductsFromServer = createAsyncThunk(
   async () => {
     try {
       const response = await axios
-        .get('http://localhost:3004/allProducts')
+        .get('https://backend-api-nine-nu.vercel.app/allProducts')
         .then(res => {
           return res.data
         })
@@ -21,7 +21,7 @@ export const getImageFromServer = createAsyncThunk(
   async () => {
     try {
       const response = await axios
-        .get('http://localhost:3004/cardWarpper')
+        .get('https://backend-api-nine-nu.vercel.app/cardWarpper')
         .then(res => {
           return res.data
         })
