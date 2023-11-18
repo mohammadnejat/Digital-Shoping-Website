@@ -83,10 +83,11 @@ const SidebarMenu = () => {
         >
           <GiHamburgerMenu className='text-2xl' />
         </span>
+
         <div className='blcok lg:hidden'>
-            <Link href='/'>
-          <img className='w-28 h-28' src={Icon.src} alt='#' />
-            </Link>
+          <Link href='/'>
+            <img className='w-28 h-28' src={Icon.src} alt='#' />
+          </Link>
         </div>
 
         <div>
@@ -110,10 +111,8 @@ const SidebarMenu = () => {
         </div>
       </div>
 
-
-
       <div className='flex gap-4 mx-3 mb-4 lg:hidden'>
-      <div className=' w-full bg-[#F0F0F0] rounded-xl'>
+        <div className=' w-full bg-[#F0F0F0] rounded-xl'>
           <div className='relative flex items-center p-1'>
             <div className=''>
               <BiSearchAlt className='text-2xl' />
@@ -364,67 +363,31 @@ const SidebarMenu = () => {
               </div>
             </div>
 
-            {/* <div className='mt-10 '>
-                        <Menu>
-                            <Link href="/">
-                                <MenuItem> خانه </MenuItem>
-                            </Link>
-                            <hr />
-                            <SubMenu label="فروشگاه">
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = pc;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }} >
-                                    <MenuItem> کامپیوتر </MenuItem>
-                                </Link>
-                                <hr />
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = laptop;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }}>
-                                    <MenuItem> لپتاپ  </MenuItem>
-                                </Link>
-                                <hr />
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = mobile;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }}>
-                                    <MenuItem> گوشی </MenuItem>
-                                </Link>
-                                <hr />
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = pcJanebi;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }}>
-                                    <MenuItem> لوازم جانبی کامپیوتر </MenuItem>
-                                </Link>
-                                <hr />
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = flash;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }}>
-                                    <MenuItem> فلش</MenuItem>
-                                </Link>
-                                <hr />
-                                <Link href="/products" onClick={() => {
-                                    const firstProduct = mobileJanebi;
-                                    setProductPageShow(firstProduct);
-                                    setIsClose(false);
-                                }}>
-                                    <MenuItem> لوازم جانبی گوشی </MenuItem>
-                                </Link>
-                            </SubMenu>
-                            <hr />
-                            <MenuItem> درباره ما </MenuItem>
-                            <hr />
-                            <MenuItem> خدمات </MenuItem>
-                        </Menu>
-                    </div> */}
+            <div className='mt-10 '>
+              <Menu>
+                <MenuItem>
+                  <Link href='/'>خانه</Link>
+                </MenuItem>
+                <hr />
+                <SubMenu label='فروشگاه'>
+                  <MenuItem href='/products'>کامپیوتر</MenuItem>
+                  <hr />
+                  <MenuItem href='/products'>لپتاپ</MenuItem>
+                  <hr />
+                  <MenuItem href='/products'>گوشی</MenuItem>
+                  <hr />
+                  <MenuItem href='/products'>لوازم جانبی کامپیوتر</MenuItem>
+                  <hr />
+                  <MenuItem href='/products'>فلش</MenuItem>
+                  <hr />
+                  <MenuItem href='/products'>لوازم جانبی گوشی</MenuItem>
+                </SubMenu>
+                <hr />
+                <MenuItem> درباره ما </MenuItem>
+                <hr />
+                <MenuItem> خدمات </MenuItem>
+              </Menu>
+            </div>
           </div>
         </div>
       </div>
