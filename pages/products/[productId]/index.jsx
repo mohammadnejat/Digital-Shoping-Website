@@ -21,18 +21,22 @@ import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import {
   addtoBasket,
+  decreaseProduct
 } from '../../../redux/product/productActions'
 import { getProductsFromServer } from '../../../redux/products/ProductReducer'
 import FooterMobile from '@/components/Footer/FooterMobile'
 import { useRouter } from 'next/router'
 import Loading from '@/components/LoadingLoader/Loading'
+import Link from 'next/link'
+
 const index = () => {
   const id = useRouter()?.query
   const dispatch = useDispatch()
   const allProducts = useSelector(action => action?.allProducts?.allProducts)
 
   let productItem = allProducts.find(item => item.id === +id.productId)
-  let s = allProducts.find(item => item.id)
+  let basket = useSelector(item => item.productActions.basket)
+
   useEffect(() => {
     dispatch(getProductsFromServer())
   }, [])
@@ -54,6 +58,10 @@ const index = () => {
   }
 
   const [color, setColor] = useState('سبز')
+
+
+const findedItem = basket.find(item => item.id === productItem.id)
+
   return (
     <>
       <ToastContainer />
@@ -66,7 +74,7 @@ const index = () => {
             <div className='block lg:hidden'>
               <div className='flex items-center gap-3 justify-evenly '>
                 <div className='flex justify-center w-8 h-8 border rounded-lg shadow-md cursor-pointer'>
-                  <span className='mt-[7px] text-teal-500'>
+                  <span className='mt-[7px] text-teal-50'>
                     <AiOutlineShareAlt />
                   </span>
                 </div>
@@ -461,112 +469,57 @@ const index = () => {
                       <span className=''>18 ماه گارانتی سامتل</span>
                     </div>
                   </div>
-                  <div className='w-full'>
+                  <div className='block w-full'>
                     <div className='float-left ml-6'>
                       <span className='text-xl font-semibold '>
                         {Number(productItem.price).toLocaleString()}
                       </span>
                       <span className='mr-1'>تومان</span>
                     </div>
-                    <div className=''>
-                      <div
-                        className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer  text-white bg-[#1C9722] flex justify-center items-center'
-                        onClick={() => {
-                          addProductToBasket()
-                          toast.success(`.کالا به سبد شما اضافه شد`, {
-                            position: 'bottom-right',
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: 'light'
-                          })
-                        }}
-                      >
-                        افزودن به سبد خرید
+                    {!findedItem ? (
+                      <div className=''>
+                        <div
+                          className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer  text-white bg-[#1C9722] flex justify-center items-center'
+                          onClick={() => {
+                            addProductToBasket()
+                            toast.success(`.کالا به سبد شما اضافه شد`, {
+                              position: 'bottom-right',
+                              autoClose: 3000,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                              theme: 'light'
+                            })
+                          }}
+                        >
+                          افزودن به سبد خرید
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className=''>
+                        <div className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer text-[#1C9722] flex justify-around items-center'>
+                          <span
+                            onClick={() => {
+                              dispatch(decreaseProduct({ id: productItem.id }))
+                            }}
+                          >
+                            حذف
+                          </span>
+                          <Link
+                            href='/cart'
+                            className='border-[#1C9722] rounded-md border-2 px-5 py-2 '
+                          >
+                            مشاهده سبد خرید
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              {/* <div className=' p-3 text-[10px] border rounded-lg h-fit'>
-                <div className='p-4 mt-2 border rounded-md shadow-md'>
-                  <div className='flex items-center justify-between gap-2'>
-                    <div className='flex items-center gap-2'>
-                      <BsShieldCheck />
-                      <span className='font-semibold'>بیمه کالا</span>
-                    </div>
-                    <div className='flex items-center gap-1 font-semibold text-blue-500 cursor-pointer'>
-                      <span>نمایش جزییات</span>
-                      <AiOutlineLeft />
-                    </div>
-                  </div>
-                  <div className='flex justify-between mt-2'>
-                    <div className='flex items-center justify-between gap-2 p-1 px-2 text-blue-500 border border-blue-500 rounded-md cursor-pointer'>
-                      <span>خرید بیمه</span>
-                      <AiOutlinePlus />
-                    </div>
-
-                    <div className='flex items-center gap-1'>
-                      <span className='text-gray-400 line-through'>36,750</span>
-                      <span className='text-sm font-semibold '>14,700</span>
-                      <span>تومان</span>
-                    </div>
-                  </div>
-                </div>
-                <div className=' bg-[#F3F8FD] w-full mx-auto p-3 mt-4'>
-                  <div className='flex flex-col'>
-                    <div className='flex items-center gap-3'>
-                      <CiShop className='text-lg font-semibold' />
-                      <span>امداد موبایل</span>
-                    </div>
-                  </div>
-                  <div className='flex flex-col mt-2'>
-                    <div className='flex items-center gap-3'>
-                      <AiOutlineCodeSandbox className='text-lg font-semibold' />
-                      <span className='text-yellow-600 '>
-                        موجود در انبار تکنولایف ( ارسال فوری )
-                      </span>
-                    </div>
-                  </div>
-                  <div className='flex flex-col mt-6'>
-                    <div className='flex items-center gap-3'>
-                      <MdOutlineDone className='text-sm font-semibold text-white bg-green-500 rounded-full' />
-                      <span className=''>18 ماه گارانتی سامتل</span>
-                    </div>
-                  </div>
-                  <div className='w-full'>
-                    <div className='float-left ml-6'>
-                      <span className='text-xl font-semibold '>
-                        {Number(productItem.price).toLocaleString()}
-                      </span>
-                      <span className='mr-1'>تومان</span>
-                    </div>
-                    <div className=''>
-                      <div
-                        className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer  text-white bg-[#1C9722] flex justify-center items-center'
-                        onClick={() => {
-                          addProductToBasket()
-                          toast.success(`.کالا به سبد شما اضافه شد`, {
-                            position: 'bottom-right',
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: 'light'
-                          })
-                        }}
-                      >
-                        افزودن به سبد خرید
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              
               <div className='p-3 mt-4 border shadow-md '>
                 <div className='w-full p-[2px] h-full rounded-md bg-gradient-to-br from-[#00AADF] via-[#8448D0] to-[#F000BB]'>
                   <div className='flex items-center justify-between gap-2 p-2 bg-white rounded-md '>
@@ -761,26 +714,40 @@ const index = () => {
                   </div>
                   <div className='w-full h-4'></div>
                   <div className='px-2'>
-                    <div className='flex items-stretch w-full'>
-                      <div
-                        className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer  text-white bg-[#1C9722] flex justify-center items-center'
-                        onClick={() => {
-                          addProductToBasket()
-                          toast.success(`.کالا به سبد شما اضافه شد`, {
-                            position: 'bottom-right',
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: 'light'
-                          })
-                        }}
-                      >
-                        افزودن به سبد خرید
+                    {!basket.length >= 1 ? (
+                      <div className=''>
+                        <div
+                          className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer  text-white bg-[#1C9722] flex justify-center items-center'
+                          onClick={() => {
+                            addProductToBasket()
+                            toast.success(`.کالا به سبد شما اضافه شد`, {
+                              position: 'bottom-right',
+                              autoClose: 3000,
+                              hideProgressBar: false,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              draggable: true,
+                              progress: undefined,
+                              theme: 'light'
+                            })
+                          }}
+                        >
+                          افزودن به سبد خرید
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className=''>
+                        <div className='w-full mt-2 rounded-lg py-3 text-[14px] cursor-pointer text-[#1C9722] flex justify-around items-center'>
+                          <span>حذف</span>
+                          <Link
+                            href='/cart'
+                            className='border-[#1C9722] rounded-md border-2 px-5 py-2 '
+                          >
+                            مشاهده سبد خرید
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

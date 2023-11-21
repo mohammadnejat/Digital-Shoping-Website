@@ -13,7 +13,8 @@ import { addProduct, decreaseProduct } from '@/redux/product/productActions'
 import { ToastContainer, toast } from 'react-toastify'
 import {
   findedInputItems,
-  getProductsFromServer
+  getProductsFromServer,
+  searchItems
 } from '@/redux/products/ProductReducer'
 import { useRouter } from 'next/router'
 
@@ -214,15 +215,13 @@ const Header = () => {
       if (path.pathname != '/products') {
         path.push('/products')
       }
-      const findedItem = allProducts.filter(item =>
-        item.title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-      )
-      if (!findedItem || !searchQuery) {
-        dispatch(getProductsFromServer())
-        dispatch(findedInputItems())
-      } else {
-        dispatch(findedInputItems(findedItem))
-      }
+      dispatch(searchItems(searchQuery))
+      // if (!findedItem || !searchQuery) {
+      //   dispatch(getProductsFromServer())
+      //   dispatch(findedInputItems())
+      // } else {
+      //   dispatch(findedInputItems(findedItem))
+      // }
     }
   }
 

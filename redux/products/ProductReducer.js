@@ -46,11 +46,18 @@ const ProductReducer = createSlice({
     setCurrentPageNumber: (state, action) => {
       state.currentPageNumber = action.payload.currentPage
     },
+    searchItems: (state, action) => {
+      let text = action.payload
+      const findedItem = state.allProducts.filter(item =>
+        item.title.toLocaleLowerCase().includes(text.toLocaleLowerCase()))
+        state.filtredProducts = findedItem
+    },
     findedInputItems: (state, action) => {
       state.filtredProducts = action.payload
     },
     sortedProducts: (state, action) => {
-      const sorted = state.allProducts.sort(action.payload)
+      console.log(action.payload);
+      let sorted = state.allProducts.sort(action.payload)
       state.allProducts = sorted
     }
   },
@@ -64,6 +71,6 @@ const ProductReducer = createSlice({
   }
 })
 
-export const { setCurrentPageNumber, findedInputItems, sortedProducts } =
+export const { setCurrentPageNumber, findedInputItems, sortedProducts , searchItems } =
   ProductReducer.actions
 export default ProductReducer.reducer

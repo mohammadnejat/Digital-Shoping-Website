@@ -18,9 +18,10 @@ import { CiShop } from 'react-icons/ci'
 import { BsTrash } from 'react-icons/bs'
 import { addProduct, decreaseProduct } from '@/redux/product/productActions'
 import { findedInputItems } from '@/redux/products/ProductReducer'
-
+import { FaAngleDown } from 'react-icons/fa'
 const SidebarMenu = () => {
   const [isClose, setIsClose] = useState(false)
+  const [isShow, setIsShow] = useState(false)
 
   const dispatch = useDispatch()
   const productBasketCount = useSelector(item => item?.productActions)
@@ -363,30 +364,53 @@ const SidebarMenu = () => {
               </div>
             </div>
 
-            <div className='mt-10 '>
-              <Menu>
-                <MenuItem>
-                  <Link href='/'>خانه</Link>
-                </MenuItem>
-                <hr />
-                <SubMenu label='فروشگاه'>
-                  <MenuItem href='/products'>کامپیوتر</MenuItem>
-                  <hr />
-                  <MenuItem href='/products'>لپتاپ</MenuItem>
-                  <hr />
-                  <MenuItem href='/products'>گوشی</MenuItem>
-                  <hr />
-                  <MenuItem href='/products'>لوازم جانبی کامپیوتر</MenuItem>
-                  <hr />
-                  <MenuItem href='/products'>فلش</MenuItem>
-                  <hr />
-                  <MenuItem href='/products'>لوازم جانبی گوشی</MenuItem>
-                </SubMenu>
-                <hr />
-                <MenuItem> درباره ما </MenuItem>
-                <hr />
-                <MenuItem> خدمات </MenuItem>
-              </Menu>
+            <div className='flex flex-col mt-10'>
+              <Link href='/' className='py-3 border-b hover:bg-slate-200 '>
+                <span className='pr-5'>خانه</span>
+              </Link>
+              <div
+                onClick={() => {
+                  setIsShow(!isShow)
+                }}
+                className='py-3 border-b cursor-pointer hover:bg-slate-200'
+              >
+                <span className='flex items-center pr-5'>
+                  فروشگاه
+                  <FaAngleDown />
+                </span>
+                <div
+                  className={`flex flex-col mt-4 
+                  ${
+                    isShow ? 'show' : 'no'
+                  } 
+                   bg-white`}
+                >
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>لپ تاپ</span>
+                  </Link>
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>موبایل</span>
+                  </Link>
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>لوازم جانبی</span>
+                  </Link>
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>کامپیوتر</span>
+                  </Link>
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>لوازم جانبی کامپیوتر</span>
+                  </Link>
+                  <Link href='/' className='py-3 hover:bg-slate-200 '>
+                    <span className='pr-5'>فلش</span>
+                  </Link>
+                </div>
+              </div>
+              <Link href='/' className='py-3 border-b hover:bg-slate-200 '>
+                <span className='pr-5'>درباره ما</span>
+              </Link>
+              <Link href='/' className='py-3 border-b hover:bg-slate-200 '>
+                <span className='pr-5'>خدمات</span>
+              </Link>
             </div>
           </div>
         </div>
