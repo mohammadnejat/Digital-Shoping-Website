@@ -459,7 +459,7 @@ const findedItem = basket.find(item => item.id === productItem.id)
                     <div className='flex items-center gap-3'>
                       <AiOutlineCodeSandbox className='text-lg font-semibold' />
                       <span className='text-yellow-600 '>
-                        موجود در انبار تکنولایف ( ارسال فوری )
+                        موجود امداد موبایل ( ارسال فوری )
                       </span>
                     </div>
                   </div>
