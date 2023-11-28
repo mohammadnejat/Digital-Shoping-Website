@@ -1,22 +1,15 @@
-import { getProductsFromServer,sortedProducts } from '@/redux/products/ProductReducer'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import Loading from '../LoadingLoader/Loading'
 
 const ProductssComponents = () => {
-  const dispatch = useDispatch()
   const products = useSelector(product => product?.allProducts?.allProducts)
   const sorted = useSelector(product => product?.allProducts?.sortedProducts)
   const filtredProducts = useSelector(
     product => product?.allProducts?.filtredProducts
   )
-
-  useEffect(() => {
-    dispatch(getProductsFromServer())
-  }, [])
-
 
   return (
     <>

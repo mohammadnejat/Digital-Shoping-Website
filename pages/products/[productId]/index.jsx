@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { MdOutlineDone, MdOutlineNotificationAdd } from 'react-icons/md'
 import { DiGitCompare } from 'react-icons/di'
 import { BsCheck, BsShieldCheck } from 'react-icons/bs'
@@ -25,25 +25,14 @@ import {
 } from '../../../redux/product/productActions'
 import { getProductsFromServer } from '../../../redux/products/ProductReducer'
 import FooterMobile from '@/components/Footer/FooterMobile'
-import { useRouter } from 'next/router'
 import Loading from '@/components/LoadingLoader/Loading'
 import Link from 'next/link'
+import { configRedux } from '@/redux/store'
 
-const index = () => {
-  const id = useRouter()?.query
+const index = ({ params: id, allProducts, basket, productItem }) => {
   const dispatch = useDispatch()
-  const allProducts = useSelector(action => action?.allProducts?.allProducts)
-
-  let productItem = allProducts.find(item => item.id === +id.productId)
-  let basket = useSelector(item => item.productActions.basket)
-
-  useEffect(() => {
-    dispatch(getProductsFromServer())
-  }, [])
-
   const Swal = require('sweetalert2')
 
-  const [text, setText] = useState('اضافه به سبد')
   const addProductToBasket = () => {
     dispatch(
       addtoBasket({
@@ -56,11 +45,9 @@ const index = () => {
       })
     )
   }
-
   const [color, setColor] = useState('سبز')
 
-
-const findedItem = basket.find(item => item.id === productItem.id)
+  const findedItem = basket.find(item => item.id === productItem.id)
 
   return (
     <>
@@ -519,7 +506,7 @@ const findedItem = basket.find(item => item.id === productItem.id)
                   </div>
                 </div>
               </div>
-              
+
               <div className='p-3 mt-4 border shadow-md '>
                 <div className='w-full p-[2px] h-full rounded-md bg-gradient-to-br from-[#00AADF] via-[#8448D0] to-[#F000BB]'>
                   <div className='flex items-center justify-between gap-2 p-2 bg-white rounded-md '>
@@ -1023,6 +1010,24 @@ const findedItem = basket.find(item => item.id === productItem.id)
       <FooterMobile />
     </>
   )
+}
+
+export async function getServerSideProps (context) {
+  const { params, req, res } = context
+  const store = configRedux()
+  await store.dispatch(getProductsFromServer())
+  const state = store?.getState()
+  let productItem = state?.allProducts?.allProducts.find(
+    item => item.id === +params.productId
+  )
+  return {
+    props: {
+      params,
+      allProducts: state?.allProducts?.allProducts,
+      basket: state.productActions.basket,
+      productItem
+    }
+  }
 }
 
 export default index
