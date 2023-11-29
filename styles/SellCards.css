@@ -2,27 +2,5 @@
   border: 3px solid red;
 }
 
-@media only screen and (max-width: 1024px) {}
 
 /* For devices with a width of 768px or less */
-@media only screen and (max-width: 768px) {
-
-
-  .btn-buy {
-    display: none;
-  }
-
-  .star {
-    display: flex !important;
-    justify-content: end !important;
-  }
-
-  .price {
-    position: absolute;
-    display: flex !important;
-    justify-content: end !important;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-  }
-}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdOutlineDone, MdOutlineNotificationAdd } from 'react-icons/md'
+import Form from 'react-bootstrap/Form'
 import { DiGitCompare } from 'react-icons/di'
 import { BsCheck, BsShieldCheck } from 'react-icons/bs'
 import {
@@ -28,8 +29,18 @@ import FooterMobile from '@/components/Footer/FooterMobile'
 import Loading from '@/components/LoadingLoader/Loading'
 import Link from 'next/link'
 import { configRedux } from '@/redux/store'
+import { TextField } from '@mui/material'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
-const index = ({ params: id, allProducts, productItem }) => {
+const Index = ({ params: id, params, data }) => {
+  const router = useRouter()
+  const [closeComment, setCloseComment] = useState(false)
+  const [userName, setUserName] = useState([])
+  const [userComment, setUserComment] = useState([])
+
+  const item = useSelector(item => item?.allProducts?.allProducts)
+  let productItem = item?.find(item => item.id === +params.productId)
   const dispatch = useDispatch()
   const Swal = require('sweetalert2')
   const basket = useSelector(item => item.productActions?.basket)
@@ -48,6 +59,21 @@ const index = ({ params: id, allProducts, productItem }) => {
   const [color, setColor] = useState('سبز')
 
   const findedItem = basket.find(item => item.id === productItem.id)
+
+  const sendCommentHandler = async () => {
+    await axios
+      .post('https://backend-api-nine-nu.vercel.app/posts', {
+        userName,
+        userComment
+      })
+      .then(response => console.log(response))
+      .catch(err => err)
+
+    setCloseComment(!closeComment)
+    router.replace(router.asPath)
+    setUserComment('')
+    setUserName('')
+  }
 
   return (
     <>
@@ -203,7 +229,7 @@ const index = ({ params: id, allProducts, productItem }) => {
                       نظرات کاربران:{' '}
                     </h3>
                     <span className='text-xs text-yellow-500 cursor-pointer'>
-                      3 نظر{' '}
+                      {data.length} نظر{' '}
                     </span>
                   </div>
                   <div className='my-4 border w-28'></div>
@@ -749,233 +775,92 @@ const index = ({ params: id, allProducts, productItem }) => {
             <div className='flex items-center'>
               <BsDot className='text-4xl font-semibold text-yellow-700' />
               <h2 className='text-xl'>نظرات کاربران</h2>
-              <span className='mr-3 text-gray-400 text-[13px]'>3 نظر</span>
+              <span className='mr-3 text-gray-400 text-[13px]'>
+                {data.length} نظر
+              </span>
             </div>
 
             <div className='gap-3 p-3 mt-3 lg:grid lg:grid-cols-12'>
               <div className='col-span-7 p-2 bg-slate-200'>
-                <article className='w-full p-6 px-8 mb-8 rounded-lg shadow-md bg-slate-100'>
-                  <header className='flex items-center justify-between w-full'>
-                    <div className='flex flex-col items-start gap-y-2 lg:flex-row lg:items-center'>
-                      <div className='flex items-center'>
-                        <p className='mr-2 text-sm text-gray-600 whitespace-nowrap'>
-                          فرنود رئوفی
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex max-w-max items-center justify-center rounded-full border p-[3px] max-w-max border border-green-800 p-[4px] border-gray-300 h-[26px]'>
-                      <div className='flex items-center w-full'>
-                        <p className='mx-1 text-[10px] font-semiBold text-green-800'>
-                          4.0 متوسط
-                        </p>
-                        <div className='!h-4 !w-4 border bg-transparent !p-0  !border-green-800   border border-gray-300 lg:w-8 lg:h-8 p-1 rounded-full flex items-center justify-center'>
-                          <MdOutlineDone />
-                        </div>
-                      </div>
-                    </div>
-                  </header>
-                  <div className='pt-6 pb-4 my-4 border-gray-200 border-y'>
-                    <p className='text-gray-800 leading-7.5 text-[11px] whitespace-pre-wrap'>
-                      منو و کیبورد فارسی داره؟
-                    </p>
-                    <div className='w-full mt-8 text-left'>
-                      <time className='text-sm  text-gray-400 text-[10px]'>
-                        شنبه ۴ شهریور ۱۴۰۲{' '}
-                      </time>
-                    </div>
-                  </div>
-                  <div className='flex items-center justify-between w-full'>
-                    <div className='flex items-center'>
-                      <p className='ml-8 text-[10px] font-semiBold text-gray-800'>
-                        این نظر برای شما مفید بود ؟
-                      </p>
-                      <div className='ml-6 flex min-w-10 cursor-pointer items-center gap-2.5 '>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsUp />
-                        </span>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsDown />
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <button className='transition-all w-max relative flex items-center justify-center h-7 rounded p-1 px-3 bg-transparent cursor-pointer flex items-center !p-0'>
-                        <div className='flex items-center cursor-pointer'>
-                          <p className='text-[10px] font-semiBold text-primary-100 flex gap-1 !font-medium'>
-                            پاسخ جدید به این نظر
+                {data.slice(-3).map(comment => (
+                  <article className='w-full p-6 px-8 mb-8 rounded-lg shadow-md bg-slate-100'>
+                    <header className='flex items-center justify-between w-full'>
+                      <div className='flex flex-col items-start gap-y-2 lg:flex-row lg:items-center'>
+                        <div className='flex items-center'>
+                          <p className='mr-2 text-sm text-gray-600 whitespace-nowrap'>
+                            {comment.userName}
                           </p>
-                          <AiOutlineLeft className=' !text-sm' />
-                        </div>
-                      </button>
-                      <div className='mt-[6px] flex items-center'>
-                        <p className='mr-[6px] text-[10px] font-regular flex gap-1 items-center text-gray-600'>
-                          <BiSolidMessageSquareDetail className='text-lg' />1
-                          پاسخ
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-full my-3 border'></div>
-                  <div>
-                    <div className='flex text-[10px] text-teal-500 gap-1'>
-                      <p>پاسخ به</p>
-                      <span>فرنود رئوفی</span>
-                    </div>
-                    <div className='mt-6 text-[10px]'>
-                      <p>سلام فرنود جان بله پشتیبانی از زبان فارسی داره.</p>
-                    </div>
-                  </div>
-                </article>
-                <article className='w-full p-6 px-8 mb-8 rounded-lg shadow-md bg-slate-100'>
-                  <header className='flex items-center justify-between w-full'>
-                    <div className='flex flex-col items-start gap-y-2 lg:flex-row lg:items-center'>
-                      <div className='flex items-center'>
-                        <p className='mr-2 text-sm text-gray-600 whitespace-nowrap'>
-                          فرنود رئوفی
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex max-w-max items-center justify-center rounded-full border p-[3px] max-w-max border border-green-800 p-[4px] border-gray-300 h-[26px]'>
-                      <div className='flex items-center w-full'>
-                        <p className='mx-1 text-[10px] font-semiBold text-green-800'>
-                          3.0 متوسط
-                        </p>
-                        <div className='!h-4 !w-4 border bg-transparent !p-0  !border-green-800   border border-gray-300 lg:w-8 lg:h-8 p-1 rounded-full flex items-center justify-center'>
-                          <MdOutlineDone />
                         </div>
                       </div>
-                    </div>
-                  </header>
-                  <div className='pt-6 pb-4 my-4 border-gray-200 border-y'>
-                    <p className='text-gray-800 leading-7.5 text-[11px] whitespace-pre-wrap'>
-                      منو و کیبورد فارسی داره؟
-                    </p>
-                    <div className='w-full mt-8 text-left'>
-                      <time className='text-sm  text-gray-400 text-[10px]'>
-                        شنبه ۴ شهریور ۱۴۰۲{' '}
-                      </time>
-                    </div>
-                  </div>
-                  <div className='flex items-center justify-between w-full'>
-                    <div className='flex items-center'>
-                      <p className='ml-8 text-[10px] font-semiBold text-gray-800'>
-                        این نظر برای شما مفید بود ؟
-                      </p>
-                      <div className='ml-6 flex min-w-10 cursor-pointer items-center gap-2.5 '>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsUp />
-                        </span>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsDown />
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <button className='transition-all w-max relative flex items-center justify-center h-7 rounded p-1 px-3 bg-transparent cursor-pointer flex items-center !p-0'>
-                        <div className='flex items-center cursor-pointer'>
-                          <p className='text-[10px] font-semiBold text-primary-100 flex gap-1 !font-medium'>
-                            پاسخ جدید به این نظر
+                      <div className='flex max-w-max items-center justify-center rounded-full border p-[3px] max-w-max border border-green-800 p-[4px] border-gray-300 h-[26px]'>
+                        <div className='flex items-center w-full'>
+                          <p className='mx-1 text-[10px] font-semiBold text-green-800'>
+                            4.0 متوسط
                           </p>
-                          <AiOutlineLeft className=' !text-sm' />
-                        </div>
-                      </button>
-                      <div className='mt-[6px] flex items-center'>
-                        <p className='mr-[6px] text-[10px] font-regular flex gap-1 items-center text-gray-600'>
-                          <BiSolidMessageSquareDetail className='text-lg' />1
-                          پاسخ
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-full my-3 border'></div>
-                  <div>
-                    <div className='flex text-[10px] text-teal-500 gap-1'>
-                      <p>پاسخ به</p>
-                      <span>فرنود رئوفی</span>
-                    </div>
-                    <div className='mt-6 text-[10px]'>
-                      <p>سلام فرنود جان بله پشتیبانی از زبان فارسی داره.</p>
-                    </div>
-                  </div>
-                </article>
-                <article className='w-full p-6 px-8 mb-8 rounded-lg shadow-md bg-slate-100'>
-                  <header className='flex items-center justify-between w-full'>
-                    <div className='flex flex-col items-start gap-y-2 lg:flex-row lg:items-center'>
-                      <div className='flex items-center'>
-                        <p className='mr-2 text-sm text-gray-600 whitespace-nowrap'>
-                          فرنود رئوفی
-                        </p>
-                      </div>
-                    </div>
-                    <div className='flex max-w-max items-center justify-center rounded-full border p-[3px] max-w-max border border-green-800 p-[4px] border-gray-300 h-[26px]'>
-                      <div className='flex items-center w-full'>
-                        <p className='mx-1 text-[10px] font-semiBold text-green-800'>
-                          5.0 متوسط
-                        </p>
-                        <div className='!h-4 !w-4 border bg-transparent !p-0  !border-green-800   border border-gray-300 lg:w-8 lg:h-8 p-1 rounded-full flex items-center justify-center'>
-                          <MdOutlineDone />
+                          <div className='!h-4 !w-4 border bg-transparent !p-0  !border-green-800   border border-gray-300 lg:w-8 lg:h-8 p-1 rounded-full flex items-center justify-center'>
+                            <MdOutlineDone />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </header>
-                  <div className='pt-6 pb-4 my-4 border-gray-200 border-y'>
-                    <p className='text-gray-800 leading-7.5 text-[11px] whitespace-pre-wrap'>
-                      منو و کیبورد فارسی داره؟
-                    </p>
-                    <div className='w-full mt-8 text-left'>
-                      <time className='text-sm  text-gray-400 text-[10px]'>
-                        شنبه ۴ شهریور ۱۴۰۲{' '}
-                      </time>
-                    </div>
-                  </div>
-                  <div className='flex items-center justify-between w-full'>
-                    <div className='flex items-center'>
-                      <p className='ml-8 text-[10px] font-semiBold text-gray-800'>
-                        این نظر برای شما مفید بود ؟
+                    </header>
+                    <div className='pt-6 pb-4 my-4 border-gray-200 border-y'>
+                      <p className='text-gray-800 leading-7.5 text-[11px] whitespace-pre-wrap'>
+                        {comment.userComment}{' '}
                       </p>
-                      <div className='ml-6 flex min-w-10 cursor-pointer items-center gap-2.5 '>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsUp />
-                        </span>
-                        <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
-                          0
-                          <FiThumbsDown />
-                        </span>
+                      <div className='w-full mt-8 text-left'>
+                        <time className='text-sm  text-gray-400 text-[10px]'>
+                          شنبه ۴ شهریور ۱۴۰۲{' '}
+                        </time>
                       </div>
                     </div>
-                    <div>
-                      <button className='transition-all w-max relative flex items-center justify-center h-7 rounded p-1 px-3 bg-transparent cursor-pointer flex items-center !p-0'>
-                        <div className='flex items-center cursor-pointer'>
-                          <p className='text-[10px] font-semiBold text-primary-100 flex gap-1 !font-medium'>
-                            پاسخ جدید به این نظر
-                          </p>
-                          <AiOutlineLeft className=' !text-sm' />
+                    <div className='flex items-center justify-between w-full'>
+                      <div className='flex items-center'>
+                        <p className='ml-8 text-[10px] font-semiBold text-gray-800'>
+                          این نظر برای شما مفید بود ؟
+                        </p>
+                        <div className='ml-6 flex min-w-10 cursor-pointer items-center gap-2.5 '>
+                          <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
+                            0
+                            <FiThumbsUp />
+                          </span>
+                          <span className='flex items-center gap-2 text-gray-800 font-semiBold'>
+                            0
+                            <FiThumbsDown />
+                          </span>
                         </div>
-                      </button>
-                      <div className='mt-[6px] flex items-center'>
-                        <p className='mr-[6px] text-[10px] font-regular flex gap-1 items-center text-gray-600'>
-                          <BiSolidMessageSquareDetail className='text-lg' />1
-                          پاسخ
+                      </div>
+                      <div>
+                        <button className='transition-all w-max relative flex items-center justify-center h-7 rounded p-1 px-3 bg-transparent cursor-pointer flex items-center !p-0'>
+                          <div className='flex items-center cursor-pointer'>
+                            <p className='text-[10px] font-semiBold text-primary-100 flex gap-1 !font-medium'>
+                              پاسخ جدید به این نظر
+                            </p>
+                            <AiOutlineLeft className=' !text-sm' />
+                          </div>
+                        </button>
+                        <div className='mt-[6px] flex items-center'>
+                          <p className='mr-[6px] text-[10px] font-regular flex gap-1 items-center text-gray-600'>
+                            <BiSolidMessageSquareDetail className='text-lg' />1
+                            پاسخ
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='w-full my-3 border'></div>
+                    <div>
+                      <div className='flex text-[10px] text-teal-500 gap-1'>
+                        <p>پاسخ به</p>
+                        <span>{comment.userName}</span>
+                      </div>
+                      <div className='mt-6 text-[10px]'>
+                        <p>
+                          سلام {comment.userName} بله پشتیبانی از زبان فارسی
+                          داره.
                         </p>
                       </div>
                     </div>
-                  </div>
-                  <div className='w-full my-3 border'></div>
-                  <div>
-                    <div className='flex text-[10px] text-teal-500 gap-1'>
-                      <p>پاسخ به</p>
-                      <span>فرنود رئوفی</span>
-                    </div>
-                    <div className='mt-6 text-[10px]'>
-                      <p>سلام فرنود جان بله پشتیبانی از زبان فارسی داره.</p>
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                ))}
               </div>
               <div className='hidden lg:block'></div>
               <div className='w-full mt-4 lg:col-span-4 lg:w-auto'>
@@ -987,6 +872,7 @@ const index = ({ params: id, allProducts, productItem }) => {
                       </p>
                     </div>
                     <button
+                      onClick={() => setCloseComment(!closeComment)}
                       id='add_cm'
                       type='button'
                       className='relative flex w-full items-center justify-center h-[52px] bg-transparent border-2 border-blue-500 rounded-[10px]'
@@ -1002,6 +888,50 @@ const index = ({ params: id, allProducts, productItem }) => {
               </div>
             </div>
           </div>
+          <div
+            className={`fixed ${
+              closeComment ? 'show1' : 'no'
+            } cursor-default z-50 p-2 rounded-xl shadow-lg bg-white w-10/12 right-10 top-6 md:right-1/3 md:top-1/4 h-fit py-4 md:w-[600px]`}
+          >
+            <h2 className='mr-3 text-3xl text-right text-black '>ثبت نظر</h2>
+            <div className='flex flex-col items-start mt-8'>
+              <label className='text-xl'>نام</label>
+              <TextField
+                onChange={e => setUserName(e.target.value)}
+                value={userName}
+                className='w-full text-2xl'
+              />
+            </div>
+            <hr className='w-full mt-8 border-b-gray-600' />
+            <div className='flex flex-col items-start mt-8'>
+              <label className='text-xl'>نظر</label>
+              <TextField
+                onChange={e => setUserComment(e.target.value)}
+                value={userComment}
+                className='w-full text-2xl'
+                multiline
+                rows={4}
+              />
+            </div>
+
+            <div className='flex w-full gap-4 mt-8'>
+              <button
+                onClick={sendCommentHandler}
+                className='flex items-center px-3 py-1 text-white bg-green-600 border-2 border-green-500 rounded shadow-md'
+              >
+                ثبت نظر
+              </button>
+
+              <button
+                onClick={() => {
+                  setCloseComment(!closeComment)
+                }}
+                className='flex items-center px-3 py-1 text-white bg-red-600 border-2 border-red-500 rounded shadow-md'
+              >
+                خروج
+              </button>
+            </div>
+          </div>
         </>
       ) : (
         <Loading />
@@ -1014,19 +944,20 @@ const index = ({ params: id, allProducts, productItem }) => {
 
 export async function getServerSideProps (context) {
   const { params, req, res } = context
+  const data = await axios
+    .get('https://backend-api-nine-nu.vercel.app/posts')
+    .then(response => response.data)
+
   const store = configRedux()
   await store.dispatch(getProductsFromServer())
-  const state = store?.getState()
-  let productItem = state?.allProducts?.allProducts.find(
-    item => item.id === +params.productId
-  )
+  const state = store.getState()
+
   return {
     props: {
       params,
-      allProducts: state?.allProducts?.allProducts,
-      productItem
+      data
     }
   }
 }
 
-export default index
+export default Index
