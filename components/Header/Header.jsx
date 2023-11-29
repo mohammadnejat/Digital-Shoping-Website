@@ -283,24 +283,25 @@ const Header = () => {
           <div className='items-center hidden gap-4 md:flex'>
             <div className='flex items-center justify-center gap-2 py-1  border cursor-pointer !border-[#e49547] rounded-lg pl-6 pr-[21px]'>
               <div>
-                <Link href='' className=''>
+                <Link href='/' className=''>
                   ورود
                 </Link>
               </div>
               <div className='py-3 border'></div>
               <div>
-                <Link href=''>ثبت نام</Link>
+                <Link href='/'>ثبت نام</Link>
               </div>
             </div>
-
             <div
+              onClick={() => path.push('/cart')}
               onMouseEnter={() =>
                 productBasketCount.basket[0] ? setIsShowBasket(true) : ''
               }
               onMouseLeave={() => setIsShowBasket(false)}
               className='p-[9px] border shadow-md relative rounded-lg cursor-pointer md:block group'
             >
-              <SlBasketLoaded className='text-2xl ' />
+              <SlBasketLoaded className='text-2xl' />
+
               {productBasketCount.basket[0] ? (
                 <div
                   className={`absolute   right-0 flex items-center justify-center w-4 h-4 text-sm text-white bg-red-500 rounded-full bottom-1`}
@@ -370,7 +371,7 @@ const Header = () => {
                                   </div>
                                 </div>
                               </div>
-                              <a
+                              <Link
                                 className='w-1/3 pt-3'
                                 href={`/products/${product.id}`}
                               >
@@ -386,7 +387,7 @@ const Header = () => {
                                     />
                                   </div>
                                 </div>
-                              </a>
+                              </Link>
                             </div>
                             <div className='mt-[14px] flex w-full flex-col'>
                               <div className='flex flex-row items-stretch w-full '>

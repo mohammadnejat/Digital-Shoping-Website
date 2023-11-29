@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MdOutlineDone, MdOutlineNotificationAdd } from 'react-icons/md'
 import { DiGitCompare } from 'react-icons/di'
 import { BsCheck, BsShieldCheck } from 'react-icons/bs'
@@ -29,10 +29,10 @@ import Loading from '@/components/LoadingLoader/Loading'
 import Link from 'next/link'
 import { configRedux } from '@/redux/store'
 
-const index = ({ params: id, allProducts, basket, productItem }) => {
+const index = ({ params: id, allProducts, productItem }) => {
   const dispatch = useDispatch()
   const Swal = require('sweetalert2')
-
+  const basket = useSelector(item => item.productActions?.basket)
   const addProductToBasket = () => {
     dispatch(
       addtoBasket({
@@ -1024,7 +1024,6 @@ export async function getServerSideProps (context) {
     props: {
       params,
       allProducts: state?.allProducts?.allProducts,
-      basket: state.productActions.basket,
       productItem
     }
   }

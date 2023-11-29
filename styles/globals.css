@@ -221,3 +221,30 @@ body {
     display: none;
   }
 }
+
+.OpenNav {
+  animation: openNav 0.3s ease forwards;
+}
+
+@keyframes openNav {
+  from {
+    transform: translateX(600px);
+    display: block;
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.HideNav {
+  animation: hideNav 0.3s forwards;
+}
+
+@keyframes hideNav {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(600px);
+    display: none;
+  }
+}
