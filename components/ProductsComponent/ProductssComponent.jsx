@@ -3,17 +3,18 @@ import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Loading from '../LoadingLoader/Loading'
+import { useRouter } from 'next/router'
 
 const ProductssComponents = () => {
+  const route = useRouter().query.q
   const products = useSelector(product => product?.allProducts?.allProducts)
   const sorted = useSelector(product => product?.allProducts?.sortedProducts)
-  const filtredProducts = useSelector(
-    product => product?.allProducts?.filtredProducts
+  const findedItem = products.filter(item =>
+    item.title.toLocaleLowerCase().includes(route)
   )
-
   return (
     <>
-      {!filtredProducts ? (
+      {!findedItem.length ? (
         products.map(product => {
           return (
             <div
@@ -108,8 +109,8 @@ const ProductssComponents = () => {
             </div>
           )
         })
-      ) : filtredProducts ? (
-        filtredProducts.map(product => {
+      ) : findedItem ? (
+        findedItem.map(product => {
           return (
             <div
               key={product.id}

@@ -38,7 +38,7 @@ const ProductReducer = createSlice({
     allProducts: [],
     imageWarpers: [],
     sortedProducts: [],
-    filtredProducts: '',
+    filtredProducts: [],
     currentPageNumber: 1,
     pageSizeIndex: 6
   },
@@ -57,7 +57,6 @@ const ProductReducer = createSlice({
       state.filtredProducts = action.payload
     },
     sortedProducts: (state, action) => {
-      console.log(action.payload)
       let sorted = state.allProducts.sort(action.payload)
       state.allProducts = sorted
     }

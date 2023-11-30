@@ -12,20 +12,20 @@ import { sortedProducts } from '@/redux/products/ProductReducer'
 const index = () => {
   const dispatch = useDispatch()
   const allProductsLength = useSelector(
-    length => length.allProducts.allProducts.length
+    length => length?.allProducts?.allProducts.length
   )
 
   const sorted = e => {
     let value = e.target.value || e.target.innerHTML
-    
+
     if (value === 'بیشترین قیمت') {
       dispatch(sortedProducts((a, b) => b.price - a.price))
-    } else if (value === 'کمترین قیمت' ) {
-        dispatch(sortedProducts((a, b) => a.price - b.price))
-    } else if (value === 'بیشترین تخفیف' ) {
-        dispatch(sortedProducts((a, b) => b.off - a.off))
-    } else if (value === 'جدیدترین' ) {
-        dispatch(sortedProducts((a, b) => a.id - b.id))
+    } else if (value === 'کمترین قیمت') {
+      dispatch(sortedProducts((a, b) => a.price - b.price))
+    } else if (value === 'بیشترین تخفیف') {
+      dispatch(sortedProducts((a, b) => b.off - a.off))
+    } else if (value === 'جدیدترین') {
+      dispatch(sortedProducts((a, b) => a.id - b.id))
     }
   }
   return (
@@ -52,10 +52,18 @@ const index = () => {
                 </select>
               </div>
               <ul className='hidden gap-4 text-xs lg:flex font-extralight'>
-                <li onClick={sorted} className='cursor-pointer'>بیشترین قیمت</li>
-                <li onClick={sorted} className='cursor-pointer'>کمترین قیمت</li>
-                <li onClick={sorted} className='cursor-pointer'>جدیدترین</li>
-                <li onClick={sorted} className='cursor-pointer'>بیشترین تخفیف</li>
+                <li onClick={sorted} className='cursor-pointer'>
+                  بیشترین قیمت
+                </li>
+                <li onClick={sorted} className='cursor-pointer'>
+                  کمترین قیمت
+                </li>
+                <li onClick={sorted} className='cursor-pointer'>
+                  جدیدترین
+                </li>
+                <li onClick={sorted} className='cursor-pointer'>
+                  بیشترین تخفیف
+                </li>
               </ul>
             </div>
             <span className='items-center hidden gap-2 ml-2 lg:flex '>

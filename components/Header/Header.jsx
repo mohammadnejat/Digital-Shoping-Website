@@ -187,7 +187,7 @@ const Header = () => {
       }
     }
   ])
-
+  const querry = path.query.q
   const [isShowNav, setIsShowNav] = useState(false)
   const [isShowBasket, setIsShowBasket] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -197,31 +197,20 @@ const Header = () => {
   }
 
   const inputClickHandler = () => {
-    const findedItem = allProducts.filter(item =>
-      item.title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-    )
-    if (path.pathname != '/products') {
-      path.push('/products')
-    }
-    if (!findedItem || !searchQuery) {
-      dispatch(getProductsFromServer())
-      dispatch(findedInputItems())
-    } else {
-      dispatch(findedInputItems(findedItem))
-    }
+    path.push(`/products?q=${searchQuery}`)
+
+    // if (!findedItem || !searchQuery) {
+    //   dispatch(getProductsFromServer())
+    //   dispatch(findedInputItems())
+    // } else {
+    //   dispatch(findedInputItems(findedItem))
+    // }
   }
   const inputkeyHandler = e => {
     if (e.keyCode === 13) {
-      if (path.pathname != '/products') {
-        path.push('/products')
-      }
-      dispatch(searchItems(searchQuery))
-      // if (!findedItem || !searchQuery) {
-      //   dispatch(getProductsFromServer())
-      //   dispatch(findedInputItems())
-      // } else {
-      //   dispatch(findedInputItems(findedItem))
-      // }
+      path.push(`/products?q=${searchQuery}`)
+
+      // dispatch(searchItems(searchQuery))
     }
   }
 
@@ -263,7 +252,7 @@ const Header = () => {
                   <div className='w-full h-full '>
                     <input
                       type='text'
-                      className='bg-[#F0F0F0] rounded-xl caret-[#007aff]  h-full py-2 md:w-[350px]  w-[80vw]'
+                      className='bg-[#F0F0F0] rounded-xl caret-[#007aff] focus:!outline-none focus:!border-none  h-full py-2 md:w-[350px]  w-[80vw]'
                       placeholder='محصول مورد نظرتان را جستجو کنید'
                       value={searchQuery}
                       onChange={handleInputChange}
