@@ -171,7 +171,10 @@ const SidebarMenu = () => {
                 <div className='dir-rtl'>
                   {productBasketCount.basket.map(product => {
                     return (
-                      <div className='w-full pb-[24px] pt-3 border-b border-gray-200 last:border-none'>
+                      <div
+                        key={product.id}
+                        className='w-full pb-[24px] pt-3 border-b border-gray-200 last:border-none'
+                      >
                         <div className='flex items-stretch w-full '>
                           <div className='flex w-2/3 flex-col gap-[2px]'>
                             <div className='h-[18px] w-[60px] '></div>

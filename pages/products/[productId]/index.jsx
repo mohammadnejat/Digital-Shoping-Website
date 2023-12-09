@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdOutlineDone, MdOutlineNotificationAdd } from 'react-icons/md'
-import Form from 'react-bootstrap/Form'
 import { DiGitCompare } from 'react-icons/di'
 import { BsCheck, BsShieldCheck } from 'react-icons/bs'
 import {
@@ -33,14 +32,15 @@ import { TextField } from '@mui/material'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-const Index = ({ params: id, params, data }) => {
+const Index = () => {
+  const id = useRouter().query
   const router = useRouter()
   const [closeComment, setCloseComment] = useState(false)
   const [userName, setUserName] = useState([])
   const [userComment, setUserComment] = useState([])
 
   const item = useSelector(item => item?.allProducts?.allProducts)
-  let productItem = item?.find(item => item.id === +params.productId)
+  let productItem = item?.find(item => item.id === +id.productId)
   const dispatch = useDispatch()
   const Swal = require('sweetalert2')
   const basket = useSelector(item => item.productActions?.basket)
@@ -229,7 +229,7 @@ const Index = ({ params: id, params, data }) => {
                       نظرات کاربران:{' '}
                     </h3>
                     <span className='text-xs text-yellow-500 cursor-pointer'>
-                      {data.length} نظر{' '}
+                      {/* {data.length} نظر{' '} */}
                     </span>
                   </div>
                   <div className='my-4 border w-28'></div>
@@ -947,10 +947,6 @@ export async function getServerSideProps (context) {
   const data = await axios
     .get('https://backend-api-nine-nu.vercel.app/posts')
     .then(response => response.data)
-
-  const store = configRedux()
-  await store.dispatch(getProductsFromServer())
-  const state = store.getState()
 
   return {
     props: {

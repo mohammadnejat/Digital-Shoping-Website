@@ -8,10 +8,9 @@ import '@/styles/SellCards.css'
 import '@/styles/Sidebar.css'
 
 import { Provider } from 'react-redux'
-import { configRedux } from '@/redux/store'
+import { store } from '@/redux/store'
 
 export default function App ({ Component, pageProps }) {
-  const store = configRedux()
   return (
     <Provider store={store}>
       <Component {...pageProps} />

@@ -2,10 +2,7 @@ import Footer from '@/components/Footer/Footer'
 import FooterMobile from '@/components/Footer/FooterMobile'
 import Header from '@/components/Header/Header'
 import { addProduct, decreaseProduct } from '@/redux/product/productActions'
-import { getProductsFromServer } from '@/redux/products/ProductReducer'
-import { TramSharp } from '@mui/icons-material'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AiOutlineCodeSandbox, AiOutlinePlus } from 'react-icons/ai'
 import { BiTrash } from 'react-icons/bi'
 import { BsTrash } from 'react-icons/bs'
@@ -15,12 +12,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 function Cart () {
-  const id = useRouter()?.query
   const dispatch = useDispatch()
   const basketProducts = useSelector(action => action?.productActions?.basket)
-  useEffect(() => {
-    dispatch(getProductsFromServer())
-  }, [])
+  const basketProduct = useSelector(action => action)
+
   const totalBasketPrice = basketProducts.map(basket => {
     if (basket.newPrice) {
       return basket.newPrice
@@ -30,7 +25,7 @@ function Cart () {
   const offPrices = basketProducts.map(
     product => (product.off / 100) * product.price
   )
-
+  console.log(basketProduct)
   return (
     <>
       <Header />
@@ -54,7 +49,10 @@ function Cart () {
             {basketProducts.length ? (
               basketProducts.map(product => {
                 return (
-                  <div className='p-6 mt-4 rounded-lg lg:border'>
+                  <div
+                    key={product.id}
+                    className='p-6 mt-4 rounded-lg lg:border'
+                  >
                     <div class=' flex w-full justify-between'>
                       <div class=' flex flex-col pt-[18px]'>
                         <a class=''>

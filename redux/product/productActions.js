@@ -28,7 +28,6 @@ const productSlicer = createSlice({
       const existProduct = state.basket.find(
         basket => basket.id === action.payload.id
       )
-
       if (existProduct) {
         const product = [
           existProduct,
